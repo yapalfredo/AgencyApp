@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +8,13 @@ namespace AgencyApp
 {
     public partial class App : Application
     {
+        //Connection to Azure Database
+        public static MobileServiceClient MobileService = new MobileServiceClient("https://agencymonitoringapp.azurewebsites.net");
+
         public App()
         {
-            InitializeComponent();
-
-            MainPage = new MainPage();
+            InitializeComponent();            
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
