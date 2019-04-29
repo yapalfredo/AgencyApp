@@ -15,6 +15,8 @@ namespace AgencyApp
 		public LoginPage ()
 		{
 			InitializeComponent ();
+            var assembly = typeof(LoginPage);
+            imageLogo.Source = ImageSource.FromResource("AgencyApp.Assets.Images.agencymonitoring.png",assembly);
 		}
 
         private void ButtonLogin_Clicked(object sender, EventArgs e)

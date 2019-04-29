@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
+﻿using AgencyApp.Model;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +11,9 @@ namespace AgencyApp
     {
         //Connection to Azure Database
         public static MobileServiceClient MobileService = new MobileServiceClient("https://agencymonitoringapp.azurewebsites.net");
+
+        //Global agency instance
+       // public static Agency agency = new Agency();
 
         public App()
         {

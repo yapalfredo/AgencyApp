@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgencyApp.AddAgencyUsersPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="stackLayoutContainer"
+                      VerticalOptions="Center"
+                     Margin="20,20,20,0">
+            <Picker x:Name="pickerAgencyName"
+                    Title="Select Agency"
+                    TitleColor="Red"
+                    SelectedIndexChanged="PickerAgencyName_SelectedIndexChanged"/>
+            <Entry x:Name="entryEmail" 
+                   Placeholder="Email"
+                   Keyboard="Email"
+                   Text="{Binding Email, Mode=TwoWay}"/>
+            <Entry x:Name="entryPassword"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   Text="{Binding Password, Mode=TwoWay}"/>
+            <Entry x:Name="entryConfirmPassword"
+                   Placeholder="Confirm Password"
+                   IsPassword="True"/>            
+            <Button x:Name="buttonAdd" 
+                    Text="Add"
+                    Clicked="ButtonAdd_Clicked"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

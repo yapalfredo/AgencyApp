@@ -6,6 +6,11 @@
         <StackLayout x:Name="stackLayoutContent"
                      VerticalOptions="Center"
                      Margin="20,20,20,0">
+            <Image x:Name="imageLogo"
+               HeightRequest="200"
+               Aspect="AspectFit"
+                   VerticalOptions="Start"
+               HorizontalOptions="FillAndExpand"/>
             <Entry x:Name="entryEmail" 
                    Placeholder="Emai Address"
                    Keyboard="Email"/>
@@ -16,9 +21,6 @@
                     Margin="0,50,0,0"
                     Text="Login"
                     Clicked="ButtonLogin_Clicked"/>
-            <Button x:Name="buttonRegister"
-                    HorizontalOptions="End"
-                    Text="Register"/>
         </StackLayout>
     </ContentPage.Content> 
 </ContentPage>

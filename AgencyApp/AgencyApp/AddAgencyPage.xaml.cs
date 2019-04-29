@@ -39,13 +39,11 @@ namespace AgencyApp
                 Register(agency);
                 DisplayAlert("Successful", "Added new agency", "Ok");
             }
-
         }
 
         private static async void Register(Agency agency)
         {
             await App.MobileService.GetTable<Agency>().InsertAsync(agency);
-
         }
     }
 }
