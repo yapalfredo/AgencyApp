@@ -12,9 +12,8 @@ namespace AgencyApp
         //Connection to Azure Database
         public static MobileServiceClient MobileService = new MobileServiceClient("https://agencymonitoringapp.azurewebsites.net");
 
-        //Global validated user login
-        public static User user = new User();
-       
+        //Global agency instance
+       // public static Agency agency = new Agency();
 
         public App()
         {

@@ -12,23 +12,9 @@ namespace AgencyApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomePage : TabbedPage
 	{
-		public HomePage (string userType)
+		public HomePage ()
 		{
-			InitializeComponent();
-
-            LoadPages(this, userType);            
+			InitializeComponent ();
 		}
-        
-        public void LoadPages(TabbedPage thisPage, string userType)
-        {
-            if (userType == "Admin")
-            {
-                thisPage.Children.Add(new AddAgencyPage {Title= "Add Agency"});
-                thisPage.Children.Add(new ViewAgenciesPage { Title = "View Agencies" });
-                thisPage.Children.Add(new AddAgencyUsersPage { Title = "Add Agency Users" });
-                thisPage.Children.Add(new ViewAgencyUsersPage { Title = "View Agency Users" });
-            }
-        }
-
 	}
 }

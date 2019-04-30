@@ -20,38 +20,6 @@ namespace AgencyApp.Model
             return users;
         }
 
-        public static async Task<bool> LoginVerification(string email, string password)
-        {
-            try
-            {
-                var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == email && u.Password == password).ToListAsync()).FirstOrDefault();
-                if (user != null)
-                {
-                    App.user = user;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (NullReferenceException) { }
-            catch (Exception) { }
-
-            return false;
-        }
-
-        private static void DisplayAlert(string v1, string v2, string v3)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static string LoginUserType(User user)
-        {
-            string userType = user.UserType;
-            return userType;
-        }
-
 
     }
 }
