@@ -31,7 +31,7 @@ namespace AgencyApp
 
             if (isAddressEmtpy || isAddressEmtpy || isEmailEmpty || isPhoneEmpty)
             {
-              await  DisplayAlert("Error", "All fields are required", "Ok");
+               await DisplayAlert("Error", "All fields are required", "Ok");
             }
             else
             {
@@ -49,11 +49,13 @@ namespace AgencyApp
         private static async void Update(Agency selectedAgency)
         {
             await App.MobileService.GetTable<Agency>().UpdateAsync(selectedAgency);
+            await Agency.Refresh();
         }
 
         private static async void Delete(Agency selectedAgency)
         {
             await App.MobileService.GetTable<Agency>().DeleteAsync(selectedAgency);
+            await Agency.Refresh();
         }
     }
 }

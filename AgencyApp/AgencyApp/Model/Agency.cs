@@ -17,10 +17,20 @@ namespace AgencyApp.Model
 
         public static async Task<List<Agency>> Read()
         {
-            var agencies = await App.MobileService.GetTable<Agency>().ToListAsync();
-
-            return agencies;
+            List<Agency> agencies  = await App.MobileService.GetTable<Agency>().ToListAsync();
+            return agencies;            
         }
 
+        public async static 
+        Task
+Refresh()
+        {
+            App.agencies = await Agency.Read();
+        }
+
+        public async static void _Refresh()
+        {
+            App.agencies = await Agency.Read();
+        }
     }
 }

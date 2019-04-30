@@ -16,25 +16,13 @@ namespace AgencyApp
 		public ViewAgencyUsersPage ()
 		{
 			InitializeComponent ();
-		}
 
-        List<Agency> agencies;
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            try
-            {
-                agencies = await Agency.Read();
-                pickerAgencyName.ItemsSource = agencies;
-                pickerAgencyName.ItemDisplayBinding = new Binding("Name");
-            }
-            catch (NullReferenceException) { }
-            catch (Exception){ }
+            pickerAgencyName.ItemsSource = App.agencies;
+            pickerAgencyName.ItemDisplayBinding = new Binding("Name");
         }
 
         Agency selectedAgency;
-        private async void PickerAgencyName_SelectedIndexChanged(object sender, EventArgs e)
+        private void PickerAgencyName_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool isNotSelected = pickerAgencyName.SelectedIndex < 0;
 
@@ -44,7 +32,8 @@ namespace AgencyApp
                 selectedAgency = pickerAgencyName.SelectedItem as Agency;
                 try
                 {
-                    IEnumerable<User> users = await App.MobileService.GetTable<User>().Where(u => u.Agency == selectedAgency.Id).ToListAsync();
+                    //IEnumerable<User> users = await App.MobileService.GetTable<User>().Where(u => u.Agency == selectedAgency.Id).ToListAsync();
+                    var users = App.users.Where(u => u.Agency == selectedAgency.Id);
                     listViewAgencyUsers.ItemsSource = users;
                     listViewAgencyUsers.IsEnabled = true;
                 }
@@ -55,10 +44,9 @@ namespace AgencyApp
 
         private void ListViewAgencyUsers_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selectedUser = listViewAgencyUsers.SelectedItem as User;
-            if(selectedUser != null)
+            if (listViewAgencyUsers.SelectedItem is User selectedUser)
             {
-                Navigation.PushAsync(new AgencyUserDetailsPage(agencies, selectedUser));
+                Navigation.PushAsync(new AgencyUserDetailsPage(selectedUser));
             }
         }
     }

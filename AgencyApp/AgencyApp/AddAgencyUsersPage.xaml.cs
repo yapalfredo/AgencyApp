@@ -13,35 +13,28 @@ namespace AgencyApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddAgencyUsersPage : ContentPage
 	{
-        User user;
-        public AddAgencyUsersPage ()
+        User user;        
+        public  AddAgencyUsersPage ()
 		{
 			InitializeComponent ();
             user = new User();
             stackLayoutContainer.BindingContext = user;
-            
-		}
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            var agencies = await Agency.Read();
-
-            if (agencies.Count > 0)
-            {
-                pickerAgencyName.ItemsSource = agencies;
-                pickerAgencyName.ItemDisplayBinding = new Binding("Name");
-            }
+            pickerAgencyName.ItemsSource = App.agencies;
+            pickerAgencyName.ItemDisplayBinding = new Binding("Name");
         }
 
         private string id;
         private string name;
         private void PickerAgencyName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var agencies = pickerAgencyName.SelectedItem as Agency;
-            id = agencies.Id;
-            name = agencies.Name;
+            try
+            {
+                var agencies = pickerAgencyName.SelectedItem as Agency;
+                id = agencies.Id;
+                name = agencies.Name;
+            }
+            catch (NullReferenceException) { }
+            catch (Exception) { }
         }
         
         private void ButtonAdd_Clicked(object sender, EventArgs e)
@@ -70,10 +63,10 @@ namespace AgencyApp
                 }
             }
         }
-
-        private static async void Register(User user)
+        private async void Register(User user)
         {
             await App.MobileService.GetTable<User>().InsertAsync(user);
+            await User.Refresh();
         }
     }
 }

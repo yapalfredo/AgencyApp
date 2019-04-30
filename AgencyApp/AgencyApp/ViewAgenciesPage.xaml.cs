@@ -16,26 +16,13 @@ namespace AgencyApp
         public ViewAgenciesPage()
         {
             InitializeComponent();
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            try
-            {
-                var agencies = await Agency.Read();
-                listViewAgencies.ItemsSource = agencies;
-            }
-            catch (NullReferenceException) { }
-            catch (Exception) { }
+            listViewAgencies.ItemsSource = App.agencies;
         }
 
         private void ListViewAgencies_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             //Will be casted as Agency object
-            var selectedAgency = listViewAgencies.SelectedItem as Agency;
-
-            if (selectedAgency != null)
+            if (listViewAgencies.SelectedItem is Agency selectedAgency)
             {
                 Navigation.PushAsync(new AgencyDetailsPage(selectedAgency));
             }

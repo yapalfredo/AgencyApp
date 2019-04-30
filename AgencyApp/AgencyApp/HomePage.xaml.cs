@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgencyApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,12 @@ namespace AgencyApp
             LoadPages(this, userType);
         }
 
-        public void LoadPages(TabbedPage thisPage, string userType)
+        public async void LoadPages(TabbedPage thisPage, string userType)
         {
+            await Agency.Refresh();
+            await User.Refresh();
             if (userType == "Admin")
-            {
+            {                
                 thisPage.Children.Add(new AddAgencyPage { Title = "Add Agency" });
                 thisPage.Children.Add(new ViewAgenciesPage { Title = "View Agencies" });
                 thisPage.Children.Add(new AddAgencyUsersPage { Title = "Add Agency Users" });

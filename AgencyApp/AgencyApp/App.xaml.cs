@@ -1,6 +1,7 @@
 ﻿using AgencyApp.Model;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +15,11 @@ namespace AgencyApp
 
         //Global validated user login
         public static User user = new User();
+
+        //Global for list<Agency>
+        public static List<Agency> agencies = new List<Agency>();
+        //Global for list<User>
+        public static List<User> users = new List<User>();
 
         public App()
         {

@@ -13,15 +13,15 @@ namespace AgencyApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgencyUserDetailsPage : ContentPage
     {
-        List<Agency> agency;
+        //List<Agency> agency;
         User user;
-        public AgencyUserDetailsPage(List<Agency> agency, User user)
+        public AgencyUserDetailsPage(User user)
         {
             InitializeComponent();
-            this.agency = agency;
+            //this.agency = agency;
             this.user = user;
             stackLayoutContainer.BindingContext = this.user;
-            pickerAgencyName.ItemsSource = agency;
+            pickerAgencyName.ItemsSource = App.agencies;
             pickerAgencyName.ItemDisplayBinding = new Binding("Name");
         }
 
@@ -29,7 +29,6 @@ namespace AgencyApp
         {
             base.OnAppearing();
             entryUserEmailAddress.Text = user.Email;
-
         }
 
         Agency selectedAgency;
@@ -69,11 +68,13 @@ namespace AgencyApp
         private static async void Update(User user)
         {
             await App.MobileService.GetTable<User>().UpdateAsync(user);
+            await User.Refresh();
         }
 
         private static async void Delete(User user)
         {
             await App.MobileService.GetTable<User>().DeleteAsync(user);
+            await User.Refresh();
         }
 
  
