@@ -33,7 +33,6 @@ namespace AgencyApp
             bool isConfPasswordEmpty = string.IsNullOrEmpty(entryClientConfPassword.Text);
             bool isPhoneEmpty = string.IsNullOrEmpty(entryClientPhoneNumber.Text);
 
-
             if (isAddressEmtpy || isAddressEmtpy || isEmailEmpty || isPhoneEmpty
                 || isPasswordEmpty || isConfPasswordEmpty)
             {
@@ -54,7 +53,7 @@ namespace AgencyApp
                 }
             }
 
-             async void Register(Client client)
+            async void Register(Client client)
             {
                 await App.MobileService.GetTable<Client>().InsertAsync(client);
 

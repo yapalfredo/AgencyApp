@@ -65,14 +65,12 @@ namespace AgencyApp
 
             ViewQueries.ClearFields(this.Content);
             await this.Navigation.PopAsync();
-
         }
 
         private async void Update(Client client)
         {
             await App.MobileService.GetTable<Client>().UpdateAsync(client);
-
-            //user = App.users.Where(u => u.CCID == client.Id) as User;
+            
             user.Email = entryClientEmailAddress.Text;
             user.Password = entryClientPassword.Text;
             await App.MobileService.GetTable<User>().UpdateAsync(user);

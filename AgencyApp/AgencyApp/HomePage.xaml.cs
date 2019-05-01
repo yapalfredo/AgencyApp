@@ -35,17 +35,28 @@ namespace AgencyApp
             {
                 await Client.Refresh();
                 await User.Refresh();
+                await Contractor.Refresh();
                 thisPage.Title = "Agency";
                 thisPage.Children.Add(new AddClientPage { Title = "Add Client" });
                 thisPage.Children.Add(new ViewClientPage { Title = "View Clients " });
+                thisPage.Children.Add(new AddContractorPage { Title = "Add Contractor" });
+                thisPage.Children.Add(new ViewContractorsPage { Title = "View Contractors " });
             }
             else if (userType == "Client")
             {
-
+                //----------------------
+                //-  T E M P O R A R Y
+                await Contractor.Refresh();
+                thisPage.Title = "Client";
+                thisPage.Children.Add(new ProfilePage { Title = "Profile" });
             }
             else if (userType == "Contractor")
             {
-
+                //----------------------
+                //-  T E M P O R A R Y
+                await Client.Refresh();
+                thisPage.Title = "Contractor";
+                thisPage.Children.Add(new ProfilePage { Title = "Profile" });
             }
         }
     }

@@ -15,7 +15,7 @@ namespace AgencyApp.Model
 
         public static List<ViewQueries> ClientUserIDView()
         {
-            //THE TWO LINES BELOW JOIN THE TABLES User and Clients
+            //THE TWO variables BELOW JOIN THE TABLES User and Clients
             //BUT FILTERS TO DISPLAY ONLY WHAT BELONGS TO CURRENT AGENCY THAT IS LOGGED IN
             //AND SELECTS ONLY USERS THAT ARE TAGGED AS "CLIENT"
             //AFTER THAT IT CREATES A TABLE CONTAINING THE NAME OF THE CLIENT, ITS ID, AND THE ID
@@ -41,6 +41,33 @@ namespace AgencyApp.Model
             return viewQuery;
         }
 
+        public static List<ViewQueries> ContractorUserIDView()
+        {
+            //THE TWO variables BELOW JOIN THE TABLES User and Cobtractor
+            //BUT FILTERS TO DISPLAY ONLY WHAT BELONGS TO CURRENT AGENCY THAT IS LOGGED IN
+            //AND SELECTS ONLY USERS THAT ARE TAGGED AS "CONTRACTOR"
+            //AFTER THAT IT CREATES A TABLE CONTAINING THE NAME OF THE Contractor, ITS ID, AND THE ID
+            //AGENCY IT BELONG TO
+            var queryUsers = App.users.Where(a => a.Agency == App.userID && a.UserType == "Contractor");
+            var queryContractor = (from a in queryUsers
+                               join b in App.contractors on a.CCID equals b.Id
+                               select new List<string> { b.Name, b.Id, a.CCID });
+            //---------------------------------------------------------------------------------------
+            //---------------------------------------------------------------------------------------
+
+            List<ViewQueries> viewQuery = new List<ViewQueries>();
+            foreach (List<string> iter in queryContractor)
+            {
+                ViewQueries temp = new ViewQueries
+                {
+                    Name = iter[0],
+                    Id = iter[1],
+                    CCID = iter[2]
+                };
+                viewQuery.Add(temp);
+            }
+            return viewQuery;
+        }
 
         //THIS IS USED FOR CLEARING ENTRIES / TEXT FIELDS IN THE PAGE 
         public static void ClearFields(View _content)

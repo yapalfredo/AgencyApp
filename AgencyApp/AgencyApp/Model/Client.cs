@@ -14,8 +14,8 @@ namespace AgencyApp.Model
 
         public static async Task<List<Client>> Read()
         {
-            List<Client> agencies = await App.MobileService.GetTable<Client>().ToListAsync();
-            return agencies;
+            List<Client> clients = await App.MobileService.GetTable<Client>().ToListAsync();
+            return clients;
         }
 
         //TO BE CLEANED SOON ---------------EXPERIMENTAL --------------------------------
