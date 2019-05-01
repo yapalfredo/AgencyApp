@@ -35,7 +35,7 @@ namespace AgencyApp
                 if (entryEmail.Text == Constants.ADMINUN &&
                     entryPassword.Text == Constants.ADMINPW)
                 {
-                    await Navigation.PushAsync(new HomePage("Admin"));
+                    await Navigation.PushAsync(new HomePage( "Admin"));
                 }
                 else if (await User.LoginVerification(entryEmail.Text, entryPassword.Text))
                 {

@@ -2,37 +2,40 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace AgencyApp.Model
 {
-    public class Agency
+    public class Client
     {
+        //public string Id { get; set; }
+
+        //public string Email { get; set; }
+
+        
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
+        public string Address { get; set; }        
         public string Phone { get; set; }
+        public string UserID { get; set; }
 
-
-        public static async Task<List<Agency>> Read()
+        public static async Task<List<Client>> Read()
         {
-            List<Agency> agencies  = await App.MobileService.GetTable<Agency>().ToListAsync();
-            return agencies;            
+            List<Client> agencies = await App.MobileService.GetTable<Client>().ToListAsync();
+            return agencies;
         }
 
         //TO BE CLEANED SOON ---------------EXPERIMENTAL --------------------------------
         // FROM HERE --------------------------------------------------------------------
-        public async static 
+        public async static
         Task
 Refresh()
         {
-            App.agencies = await Agency.Read();
+            App.clients = await Client.Read();
         }
 
         public async static void _Refresh()
         {
-            App.agencies = await Agency.Read();
+            App.clients = await Client.Read();
         }
         // TO HERE ----------------------------------------------------------------------
     }

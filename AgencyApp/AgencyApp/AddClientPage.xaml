@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgencyApp.AddClientPage">
+    <ContentPage.Content>        
+            <StackLayout x:Name="stackLayoutContainer"
+                     VerticalOptions="Center"
+                     Margin="20,20,20,0">
+                <Label Text="Welcome to Add Client Page"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="entryClientName"
+                   Placeholder="Client Name"
+                   Text="{Binding Name, Mode=TwoWay}"/>
+                <Entry x:Name="entryClientAddress" 
+                   Placeholder="Complete Address"
+                   Text="{Binding Address, Mode=TwoWay}"/>
+                <Entry x:Name="entryClientEmailAddress"
+                   Placeholder="Email Address"
+                   Keyboard="Email"
+                   Text="{Binding Email, Mode=TwoWay}"/>
+            <Entry x:Name="entryClientPassword"
+                   Placeholder="Password"
+                   IsPassword="True"/>
+            <Entry x:Name="entryClientConfPassword"
+                   Placeholder="Confirm Password"
+                   IsPassword="True"/>
+            <Entry x:Name="entryClientPhoneNumber"
+                   Placeholder="Phone Number"
+                   Text="{Binding Phone, Mode=TwoWay}"/>
+                <Button x:Name="buttonAdd"
+                    Margin="0,50,0,0"
+                    Text="Add"
+                        Clicked="ButtonAdd_Clicked"/>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

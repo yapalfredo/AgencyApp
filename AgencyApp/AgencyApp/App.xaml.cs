@@ -20,6 +20,10 @@ namespace AgencyApp
         public static List<Agency> agencies = new List<Agency>();
         //Global for list<User>
         public static List<User> users = new List<User>();
+        //Global for list<Client>
+        public static List<Client> clients = new List<Client>();
+
+        public static string userID;
 
         public App()
         {

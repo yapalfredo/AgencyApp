@@ -13,22 +13,14 @@ namespace AgencyApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgencyUserDetailsPage : ContentPage
     {
-        //List<Agency> agency;
         User user;
         public AgencyUserDetailsPage(User user)
         {
             InitializeComponent();
-            //this.agency = agency;
             this.user = user;
             stackLayoutContainer.BindingContext = this.user;
             pickerAgencyName.ItemsSource = App.agencies;
             pickerAgencyName.ItemDisplayBinding = new Binding("Name");
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            entryUserEmailAddress.Text = user.Email;
         }
 
         Agency selectedAgency;

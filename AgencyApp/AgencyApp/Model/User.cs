@@ -13,6 +13,7 @@ namespace AgencyApp.Model
         public string Password { get; set; }
         public string UserType { get; set; }
         public string Agency { get; set; }
+        public string CCID { get; set; }
 
         public static async Task<List<User>> Read()
         {
@@ -42,12 +43,17 @@ namespace AgencyApp.Model
             return result;
         }
 
+        
         public static string LoginUserType(User user)
         {
+            App.userID = user.Id;
             string userType = user.UserType;
             return userType;
         }
 
+
+        //TO BE CLEANED SOON ---------------EXPERIMENTAL --------------------------------
+        // FROM HERE --------------------------------------------------------------------
         public async static
 Task
 Refresh()
@@ -59,6 +65,6 @@ Refresh()
         {
             App.users = await User.Read();
         }
-
+        // TO HERE ----------------------------------------------------------------------
     }
 }
