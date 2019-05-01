@@ -24,7 +24,7 @@ namespace AgencyApp
             stackLayoutContainer.BindingContext = client;
         }
 
-        private void ButtonAdd_Clicked(object sender, EventArgs e)
+        private async void ButtonAdd_Clicked(object sender, EventArgs e)
         {
             bool isNameEmpty = string.IsNullOrEmpty(entryClientName.Text);
             bool isAddressEmtpy = string.IsNullOrEmpty(entryClientAddress.Text);
@@ -37,38 +37,40 @@ namespace AgencyApp
             if (isAddressEmtpy || isAddressEmtpy || isEmailEmpty || isPhoneEmpty
                 || isPasswordEmpty || isConfPasswordEmpty)
             {
-                DisplayAlert("Error", "All fields are required", "Ok");
+              await  DisplayAlert("Error", "All fields are required", "Ok");
             }
             else
             {
                 if (entryClientPassword.Text != entryClientConfPassword.Text)
                 {
-                    DisplayAlert("Error", "Passwords don't match", "Ok");
+                   await DisplayAlert("Error", "Passwords don't match", "Ok");
                 }
                 else
-                {                 
+                {
                     Register(client);
-                    DisplayAlert("Successful", "Added new client", "Ok");
-                }                
+                    await DisplayAlert("Successful", "Added new client", "Ok");
+
+                    ViewQueries.ClearFields(this.Content);
+                }
             }
-        }
 
-        private async void Register(Client client)
-        {
-            await App.MobileService.GetTable<Client>().InsertAsync(client);
-
-            user = new User
+             async void Register(Client client)
             {
-                Email = entryClientEmailAddress.Text,
-                Password = entryClientPassword.Text,
-                UserType = "Client",
-                Agency = App.userID,
-                CCID = client.Id
-            };
-            await App.MobileService.GetTable<User>().InsertAsync(user);
+                await App.MobileService.GetTable<Client>().InsertAsync(client);
 
-            await Client.Refresh();
-            await User.Refresh();
+                user = new User
+                {
+                    Email = entryClientEmailAddress.Text,
+                    Password = entryClientPassword.Text,
+                    UserType = "Client",
+                    Agency = App.userID,
+                    CCID = client.Id
+                };
+                await App.MobileService.GetTable<User>().InsertAsync(user);
+
+               await Client.Refresh();
+               await User.Refresh();
+            }
         }
     }
 }

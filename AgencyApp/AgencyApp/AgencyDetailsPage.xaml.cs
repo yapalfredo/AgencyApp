@@ -37,6 +37,8 @@ namespace AgencyApp
             {
                 Update(selectedAgency);
                 await DisplayAlert("Successful", "Updated agency details", "Ok");
+
+                await this.Navigation.PopAsync();
             }
         }
 
@@ -44,6 +46,9 @@ namespace AgencyApp
         {
             Delete(selectedAgency);
             await DisplayAlert("Successful", "Deleted agency", "Ok");
+
+            ViewQueries.ClearFields(this.Content);
+            await this.Navigation.PopAsync();
         }
 
         private static async void Update(Agency selectedAgency)

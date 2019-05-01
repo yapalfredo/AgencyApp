@@ -24,7 +24,7 @@ namespace AgencyApp
         }
 
         Agency selectedAgency;
-        private void ButtonUpdate_Clicked(object sender, EventArgs e)
+        private async void ButtonUpdate_Clicked(object sender, EventArgs e)
         {
             bool isNotSelected = pickerAgencyName.SelectedIndex < 0;
             bool isEmailEmpty = string.IsNullOrEmpty(entryUserEmailAddress.Text);
@@ -33,20 +33,22 @@ namespace AgencyApp
 
             if (isNotSelected || isEmailEmpty || isPasswordEmpty || isConfPasswordEmpty)
             {
-                DisplayAlert("Error", "All fields are required", "Ok");
+               await DisplayAlert("Error", "All fields are required", "Ok");
             }
             else
             {
                 if (entryUserPassword.Text != entryUserConfPassword.Text)
                 {
-                    DisplayAlert("Error", "Passwords don't match", "Ok");
+                    await DisplayAlert("Error", "Passwords don't match", "Ok");
                 }
                 else
                 {
                     selectedAgency = pickerAgencyName.SelectedItem as Agency;
                     user.Agency = selectedAgency.Id;
                     Update(user);
-                    DisplayAlert("Successful", "Updated agency details", "Ok");
+                    await DisplayAlert("Successful", "Updated agency details", "Ok");
+
+                    await this.Navigation.PopAsync();
                 }
             }
         }
@@ -55,6 +57,9 @@ namespace AgencyApp
         {
             Delete(user);
             await DisplayAlert("Successful", "Deleted agency user", "Ok");
+
+            ViewQueries.ClearFields(this.Content);
+            await this.Navigation.PopAsync();
         }
 
         private static async void Update(User user)

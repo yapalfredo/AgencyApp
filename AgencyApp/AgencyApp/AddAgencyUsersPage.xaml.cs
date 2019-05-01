@@ -60,6 +60,7 @@ namespace AgencyApp
                     user.Agency = id;
                     Register(user);
                     DisplayAlert("Successful", "Added user to " + name, "Ok");
+                    ViewQueries.ClearFields(this.Content);
                 }
             }
         }

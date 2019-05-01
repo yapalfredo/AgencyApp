@@ -37,7 +37,8 @@ namespace AgencyApp
             else
             {
                 Register(agency);
-                DisplayAlert("Successful", "Added new agency", "Ok");                
+                DisplayAlert("Successful", "Added new agency", "Ok");
+                ViewQueries.ClearFields(this.Content);
             }
         }
 
