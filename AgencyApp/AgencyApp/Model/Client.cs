@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 namespace AgencyApp.Model
 {
     public class Client
-    {
-        //public string Id { get; set; }
-
-        //public string Email { get; set; }
-
-        
+    {  
         public string Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }        
         public string Phone { get; set; }
-        public string UserID { get; set; }
 
         public static async Task<List<Client>> Read()
         {

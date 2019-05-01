@@ -37,6 +37,7 @@ namespace AgencyApp
                 await User.Refresh();
                 thisPage.Title = "Agency";
                 thisPage.Children.Add(new AddClientPage { Title = "Add Client" });
+                thisPage.Children.Add(new ViewClientPage { Title = "View Clients " });
             }
             else if (userType == "Client")
             {
