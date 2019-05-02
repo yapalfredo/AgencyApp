@@ -10,4 +10,4 @@ Microsoft Azure for Mobile Services
 
 
 # NOTE:
-The code in this project is not clean yet, a lot of redundancies happening all over the files. Finishing the basic functionalities of the project is the top priority. When everything is in place, then we will start cleaning it up and implement MVVM framework.
+The codes are not clean yet as it's still on its early stage. There are a lot of redundancies happening all over. Finishing the basic functionalities of the project is the top priority for now. When everything is in place, then we will start cleaning it up and implement MVVM framework.
