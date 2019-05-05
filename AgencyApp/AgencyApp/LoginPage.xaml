@@ -12,7 +12,7 @@
                    VerticalOptions="Start"
                HorizontalOptions="FillAndExpand"/>
             <Entry x:Name="entryEmail" 
-                   Placeholder="Emai Address"
+                   Placeholder="Email Address"
                    Keyboard="Email"/>
             <Entry x:Name="entryPassword"
                    Placeholder="Password" 

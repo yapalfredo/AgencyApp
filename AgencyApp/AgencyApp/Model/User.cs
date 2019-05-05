@@ -26,7 +26,9 @@ namespace AgencyApp.Model
             bool result = false;
             try
             {
-                var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == email && u.Password == password).ToListAsync()).FirstOrDefault();
+                //var user = (await App.MobileService.GetTable<User>().Where(u => u.Email == email && u.Password == password).ToListAsync()).FirstOrDefault();
+                var users = await Read();
+                var user = users.Where(u => u.Email == email && u.Password == password).FirstOrDefault();
                 if (user != null)
                 {
                     App.user = user;

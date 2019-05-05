@@ -12,7 +12,7 @@ namespace AgencyApp.Model
         public string Address { get; set; }        
         public string Phone { get; set; }
 
-        public static async Task<List<Client>> Read()
+        public async static Task<List<Client>> Read()
         {
             List<Client> clients = await App.MobileService.GetTable<Client>().ToListAsync();
             return clients;
@@ -24,12 +24,14 @@ namespace AgencyApp.Model
         Task
 Refresh()
         {
-            App.clients = await Client.Read();
+            // App.clients = await Client.Read();
+
+            App.clients = await App.MobileService.GetTable<Client>().ToListAsync();
         }
 
         public async static void _Refresh()
         {
-            App.clients = await Client.Read();
+           // App.clients = await Client.Read();
         }
         // TO HERE ----------------------------------------------------------------------
     }

@@ -81,5 +81,31 @@ namespace AgencyApp.Model
                 }
             }
         }
+
+        //THIS IS USED FOR Enabling fields / text entries in the page
+        public static void EnableFields(View _content)
+        {
+            foreach (View item in ((StackLayout)_content).Children)
+            {
+                if (item.GetType() == typeof(Entry))
+                {
+                    Entry E = (Entry)item;
+                    E.IsEnabled = true;
+                }
+            }
+        }
+
+        //THIS IS USED FOR Disabling fields / text entries in the page
+        public static void DisableFields(View _content)
+        {
+            foreach (View item in ((StackLayout)_content).Children)
+            {
+                if (item.GetType() == typeof(Entry))
+                {
+                    Entry E = (Entry)item;
+                    E.IsEnabled = false;
+                }
+            }
+        }
     }
 }

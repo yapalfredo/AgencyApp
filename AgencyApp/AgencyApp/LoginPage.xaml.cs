@@ -35,17 +35,32 @@ namespace AgencyApp
                 if (entryEmail.Text == Constants.ADMINUN &&
                     entryPassword.Text == Constants.ADMINPW)
                 {
-                    await Navigation.PushAsync(new HomePage( "Admin"));
+                    //  await Navigation.PushAsync(new HomePage( "Admin"));
+                     App.user.UserType = "Admin";
+                     LoadMasterPage();
+                     MessagingCenter.Send<object>(this, App.EVENT_LAUNCH_HOME_PAGE);
                 }
                 else if (await User.LoginVerification(entryEmail.Text, entryPassword.Text))
                 {
-                    await Navigation.PushAsync(new HomePage(User.LoginUserType(App.user)));
+                    User.LoginUserType(App.user);
+                    LoadMasterPage();
+                    MessagingCenter.Send<object>(this, App.EVENT_LAUNCH_HOME_PAGE);
+                    // Application.Current.MainPage = new HomePage(User.LoginUserType(App.user));
+                    // await Navigation.PushAsync(new HomePage(User.LoginUserType(App.user)));
                 }
                 else
                 {
                     await DisplayAlert("Error", "Incorrect login details", "Ok");
                 }
             }
+        }
+
+        private async void LoadMasterPage()
+        {
+            await Agency.Refresh();
+            await User.Refresh();
+            await Client.Refresh();
+            await Contractor.Refresh();
         }
     }
 }

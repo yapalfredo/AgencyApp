@@ -3,10 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AgencyApp.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Profile Page!"
+        <StackLayout x:Name="stackLayoutContainer"
+                     VerticalOptions="Center"
+                     Margin="20,20,20,0">
+            <Label Text="Welcome Profile Page"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="entryName"
+                   Placeholder="Contractor Name"
+                   Text="{Binding Name, Mode=TwoWay}"
+                   IsEnabled="False"/>
+            <Entry x:Name="entryAddress" 
+                   Placeholder="Complete Address"
+                   Text="{Binding Address, Mode=TwoWay}"
+                   IsEnabled="False"/>
+            <Entry x:Name="entryEmail"
+                   Placeholder="Email Address"
+                   Keyboard="Email"
+                   Text="{Binding Email, Mode=TwoWay}"
+                   IsEnabled="False"/>
+            <Entry x:Name="entryPassword"
+                       Placeholder="Password"
+                       IsPassword="True"
+                   IsEnabled="False"/>
+            <Entry x:Name="entryConfirmPassword"
+                       Placeholder="Confirm Password"
+                       IsPassword="True"
+                   IsEnabled="False"/>
+            <Entry x:Name="entryPhone"
+                       Placeholder="Phone Number"
+                       Text="{Binding Phone, Mode=TwoWay}"
+                   IsEnabled="False"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                
+
+                <Button x:Name="buttonEditUpdate"
+                    Clicked="ButtonEditUpdate_Clicked"
+                       Grid.Row="0" Grid.Column="0"/>
+                <Button x:Name="buttonCancel"
+                    IsVisible="false"
+                    Clicked="ButtonCancel_Clicked"
+                        Grid.Row="0" Grid.Column="1"
+                        Text="Cancel"/>
+            </Grid>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

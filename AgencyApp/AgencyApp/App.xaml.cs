@@ -27,11 +27,28 @@ namespace AgencyApp
 
 
         public static string userID;
+        public static string EVENT_LAUNCH_LOGIN_PAGE = "EVENT_LAUNCH_LOGIN_PAGE";
+        public static string EVENT_LAUNCH_HOME_PAGE = "EVENT_LAUNCH_HOME_PAGE";
 
         public App()
         {
-            InitializeComponent();            
-            MainPage = new NavigationPage(new LoginPage());
+            InitializeComponent();
+            //MainPage = new NavigationPage(new LoginPage());
+
+            MainPage = new LoginPage();
+
+            MessagingCenter.Subscribe<object>(this, EVENT_LAUNCH_LOGIN_PAGE, SetLoginPageAsRootPage);
+            MessagingCenter.Subscribe<object>(this, EVENT_LAUNCH_HOME_PAGE, SetHomePageAsRootPage);
+        }
+
+        private void SetLoginPageAsRootPage(object sender)
+        {
+            MainPage = new LoginPage();
+        }
+
+        private void SetHomePageAsRootPage(object sender)
+        {
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()
