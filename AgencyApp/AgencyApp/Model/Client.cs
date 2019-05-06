@@ -31,7 +31,7 @@ Refresh()
 
         public async static void _Refresh()
         {
-           // App.clients = await Client.Read();
+            App.clients = await Client.Read();
         }
         // TO HERE ----------------------------------------------------------------------
     }

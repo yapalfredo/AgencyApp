@@ -7,9 +7,6 @@
         <StackLayout x:Name="stackLayoutContainer"
                      VerticalOptions="Center"
                      Margin="20,20,20,0">
-            <Label Text="Welcome to Add Agency Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Entry x:Name="entryAgencyName"
                    Placeholder="Agency Name"
                    Text="{Binding Name, Mode=TwoWay}"/>

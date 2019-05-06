@@ -18,7 +18,7 @@ namespace AgencyApp
 
         //MasterDetails
         public List<MasterPageItem> MenuList { get; set; }
-
+        string title;
         public HomePage()
         {
             InitializeComponent();
@@ -40,9 +40,11 @@ namespace AgencyApp
             else if (App.user.UserType == "Agency")
             {
                 MenuList.Add(new MasterPageItem() { Title = "Add Client", Icon = "", TargetType = typeof(AddClientPage) });
-                MenuList.Add(new MasterPageItem() { Title = "View Clients Page", Icon = "", TargetType = typeof(ViewClientPage) });
+                MenuList.Add(new MasterPageItem() { Title = "View Clients", Icon = "", TargetType = typeof(ViewClientPage) });
                 MenuList.Add(new MasterPageItem() { Title = "Add Contractor", Icon = "", TargetType = typeof(AddContractorPage) });
-                MenuList.Add(new MasterPageItem() { Title = "View Contractors Page", Icon = "", TargetType = typeof(ViewContractorsPage) });
+                MenuList.Add(new MasterPageItem() { Title = "View Contractors", Icon = "", TargetType = typeof(ViewContractorsPage) });
+                MenuList.Add(new MasterPageItem() { Title = "Create Assignment", Icon = "", TargetType = typeof(CreateAssignment) });
+
 
                 Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(AddClientPage)));
             }
@@ -68,7 +70,9 @@ namespace AgencyApp
             var item = (MasterPageItem)e.SelectedItem;
             Type page = item.TargetType;
 
+            this.Title = item.Title;
             Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            
             IsPresented = false;
         }
 

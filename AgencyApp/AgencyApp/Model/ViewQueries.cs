@@ -43,7 +43,7 @@ namespace AgencyApp.Model
 
         public static List<ViewQueries> ContractorUserIDView()
         {
-            //THE TWO variables BELOW JOIN THE TABLES User and Cobtractor
+            //THE TWO variables BELOW JOIN THE TABLES User and Contractor
             //BUT FILTERS TO DISPLAY ONLY WHAT BELONGS TO CURRENT AGENCY THAT IS LOGGED IN
             //AND SELECTS ONLY USERS THAT ARE TAGGED AS "CONTRACTOR"
             //AFTER THAT IT CREATES A TABLE CONTAINING THE NAME OF THE Contractor, ITS ID, AND THE ID

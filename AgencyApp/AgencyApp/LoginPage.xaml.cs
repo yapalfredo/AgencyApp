@@ -35,7 +35,6 @@ namespace AgencyApp
                 if (entryEmail.Text == Constants.ADMINUN &&
                     entryPassword.Text == Constants.ADMINPW)
                 {
-                    //  await Navigation.PushAsync(new HomePage( "Admin"));
                      App.user.UserType = "Admin";
                      LoadMasterPage();
                      MessagingCenter.Send<object>(this, App.EVENT_LAUNCH_HOME_PAGE);
@@ -45,8 +44,6 @@ namespace AgencyApp
                     User.LoginUserType(App.user);
                     LoadMasterPage();
                     MessagingCenter.Send<object>(this, App.EVENT_LAUNCH_HOME_PAGE);
-                    // Application.Current.MainPage = new HomePage(User.LoginUserType(App.user));
-                    // await Navigation.PushAsync(new HomePage(User.LoginUserType(App.user)));
                 }
                 else
                 {
