@@ -44,7 +44,7 @@ namespace AgencyApp
                 MenuList.Add(new MasterPageItem() { Title = "Add Contractor", Icon = "", TargetType = typeof(AddContractorPage) });
                 MenuList.Add(new MasterPageItem() { Title = "View Contractors", Icon = "", TargetType = typeof(ViewContractorsPage) });
                 MenuList.Add(new MasterPageItem() { Title = "Create Assignment", Icon = "", TargetType = typeof(CreateAssignment) });
-
+                MenuList.Add(new MasterPageItem() { Title = "View Assignments", Icon = "", TargetType = typeof(ViewAssignments) });
 
                 Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(AddClientPage)));
             }
