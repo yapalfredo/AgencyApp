@@ -79,6 +79,22 @@ namespace AgencyApp.Model
                     Entry E = (Entry)item;
                     E.Text = "";
                 }
+
+                if (item.GetType() == typeof(Picker))
+                {
+                    Picker P = (Picker)item;
+                    P.SelectedIndex = -1;                    
+                }
+
+                if (item.GetType() == typeof(Switch))
+                {
+                    Switch S = (Switch)item;
+                    
+                    if (S.IsToggled)
+                    {
+                        S.IsToggled = true;
+                    }
+                }
             }
         }
 

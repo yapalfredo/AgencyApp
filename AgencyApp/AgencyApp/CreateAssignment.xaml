@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AgencyApp.CreateAssignment">
     <ContentPage.Content>
-
         <StackLayout x:Name="stackLayoutContainer"
                      VerticalOptions="Center"
-                     Margin="20,20,20,0">
+                     Margin="20,0,20,0">
             <Picker x:Name="pickerClientName"
                     Title="Select Client"
                     TitleColor="Red"
-                    VerticalOptions="Start"/>
+                    VerticalOptions="Start"
+                    />
             <Picker x:Name="pickerContractorName"
                     Title="Select Contractor"
                     TitleColor="Red"
@@ -27,10 +27,57 @@
             <TimePicker x:Name="timePickerStartTime"/>
             <Label Text="Select end time" />
             <TimePicker x:Name="timePickerEndTime"/>
-            
+            <Label Text="Days" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-
-
+                <Label Text="Mon" Grid.Row="0" Grid.Column="0"/>
+                <Switch x:Name="switchMon" Grid.Row="1" Grid.Column="0"
+                        IsToggled="{Binding Mon, Mode=TwoWay}"/>
+                <Label Text="Tue" Grid.Row="0" Grid.Column="1"/>
+                <Switch x:Name="switchTue" Grid.Row="1" Grid.Column="1"
+                        IsToggled="{Binding Tue, Mode=TwoWay}"/>
+                <Label Text="Wed" Grid.Row="0" Grid.Column="2"/>
+                <Switch x:Name="switchWed" Grid.Row="1" Grid.Column="2"
+                        IsToggled="{Binding Wed, Mode=TwoWay}"/>
+                <Label Text="Thu" Grid.Row="0" Grid.Column="3"/>
+                <Switch x:Name="switchThu" Grid.Row="1" Grid.Column="3"
+                        IsToggled="{Binding Thu, Mode=TwoWay}"/>
+                <Label Text="Fri" Grid.Row="0" Grid.Column="4"/>
+                <Switch x:Name="switchFri" Grid.Row="1" Grid.Column="4"
+                        IsToggled="{Binding Fri, Mode=TwoWay}"/>
+                <Label Text="Sat" Grid.Row="0" Grid.Column="5"/>
+                <Switch x:Name="switchSat" Grid.Row="1" Grid.Column="5"
+                        IsToggled="{Binding Sat, Mode=TwoWay}"/>
+                <Label Text="Sun" Grid.Row="0" Grid.Column="6"/>
+                <Switch x:Name="switchSun" Grid.Row="1" Grid.Column="6"
+                        IsToggled="{Binding Sun, Mode=TwoWay}"/>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="buttonCreate" Grid.Row="0" Grid.Column="0"
+                        Text="Create" Clicked="ButtonCreate_Clicked"/>
+                <Button x:Name="buttonCancel" Grid.Row="0" Grid.Column="1"
+                        Text="Cancel" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

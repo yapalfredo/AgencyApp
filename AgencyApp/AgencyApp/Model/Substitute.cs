@@ -4,12 +4,14 @@ using System.Text;
 
 namespace AgencyApp.Model
 {
-    public class Schedule
+    public class Substitute
     {
         public string Id { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+
+        // False day, True Night
+        public bool ShiftDayOrNight { get; set; }
+
         public string ContractorId { get; set; }
-        public bool Relieving { get; set; }
+        public string Date { get; set; }
     }
 }

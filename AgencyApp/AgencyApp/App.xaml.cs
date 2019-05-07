@@ -25,6 +25,9 @@ namespace AgencyApp
         //Global for list<Contractor>
         public static List<Contractor> contractors = new List<Contractor>();
 
+        //Global for list<Assignments>
+        public static List<Assignments> assignments = new List<Assignments>();
+
 
         public static string userID;
         public static string EVENT_LAUNCH_LOGIN_PAGE = "EVENT_LAUNCH_LOGIN_PAGE";

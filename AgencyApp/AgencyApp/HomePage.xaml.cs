@@ -18,7 +18,7 @@ namespace AgencyApp
 
         //MasterDetails
         public List<MasterPageItem> MenuList { get; set; }
-        string title;
+        
         public HomePage()
         {
             InitializeComponent();
